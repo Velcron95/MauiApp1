@@ -1,0 +1,11 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.ItemDetailPage"
+             Title="Add a Task">
+    <VerticalStackLayout BackgroundColor="Black">
+        <Label Text="List of things to do" />
+        <Entry Placeholder="Add Errand" Text="{Binding NewTask}" />
+        <Entry Placeholder="Add Description" Text="{Binding NewDescription}" />
+        <Button Text="Add" Command="{Binding AddCommand}" />
+    </VerticalStackLayout>
+</ContentPage>

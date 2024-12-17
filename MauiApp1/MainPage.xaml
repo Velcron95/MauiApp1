@@ -2,14 +2,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:MauiApp1.Models"
              xmlns:vm="clr-namespace:MauiApp1.ViewModels"
+             xmlns:converters="clr-namespace:MauiApp1.Converters"
              x:Class="MauiApp1.MainPage"
              BindingContext="{Binding Source={x:Reference MainPage}}">
 
-    
-    <StackLayout BackgroundColor="Black">
+    <Grid BackgroundColor="Black">
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
         
-        <ScrollView BackgroundColor="Black">
+        <ScrollView Grid.Row="0" Grid.Column="0" 
+                    IsVisible="{Binding IsEditModalVisible, Converter={StaticResource InverseBooleanConverter}}">
             <VerticalStackLayout Padding="30,0" Spacing="25">
                 <CollectionView ItemsSource="{Binding ListItem}" SelectionMode="None">
                     <CollectionView.ItemTemplate>
@@ -22,7 +30,6 @@
                                     <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
                                         <CheckBox IsChecked="{Binding IsDone}" />
                                         <Label Text="Mark as done" VerticalOptions="Center" />
-                                        
                                         <Button Text="Edit"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=EditTaskCommand}"
                                                 CommandParameter="{Binding .}" />
@@ -32,8 +39,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
-                
                 <Button Text="Delete All Checked"
                         Command="{Binding DeleteAllCheckedCommand}"
                         BackgroundColor="Red"
@@ -42,21 +47,22 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView>
-        <StackLayout IsVisible="{Binding IsEditModalVisible}"
-                     BackgroundColor="White"
-                     Padding="20"
-                     Spacing="20"
-                     VerticalOptions="CenterAndExpand"
-                     HorizontalOptions="CenterAndExpand"
-                     Opacity="0.9">
-            <Label Text="Edit Task" FontSize="20" HorizontalOptions="Center" />
-            <Label Text="{Binding SelectedTask.Id}"></Label>
-            <Entry Text="{Binding SelectedTask.Name}" Placeholder="Task Name" />
-            <Entry Text="{Binding SelectedTask.Description}" Placeholder="Task Description" />
-            <Button Text="Save" Command="{Binding SaveEditCommand}" />
-            <Button Text="Cancel" Command="{Binding ClosePopupCommand}" />
-        </StackLayout>
+        
+        <ScrollView Grid.Row="0" Grid.Column="0"
+                    IsVisible="{Binding IsEditModalVisible}">
+            <StackLayout BackgroundColor="White"
+                         Padding="20"
+                         Spacing="20"
+                         Opacity="0.9"
+                         VerticalOptions="Start"
+                         HorizontalOptions="FillAndExpand">
+                <Label Text="Edit Task" FontSize="20" HorizontalOptions="Center" />
+                <Label Text="{Binding SelectedTask.Id}" />
+                <Entry Text="{Binding SelectedTask.Name}" Placeholder="Task Name" />
+                <Entry Text="{Binding SelectedTask.Description}" Placeholder="Task Description" />
+                <Button Text="Save" Command="{Binding SaveEditCommand}" />
+                <Button Text="Cancel" Command="{Binding ClosePopupCommand}" />
+            </StackLayout>
         </ScrollView>
-    </StackLayout>
+    </Grid>
 </ContentPage>

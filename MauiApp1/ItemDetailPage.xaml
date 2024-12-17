@@ -3,9 +3,12 @@
              x:Class="MauiApp1.ItemDetailPage"
              Title="Add a Task">
     <VerticalStackLayout BackgroundColor="Black">
-        <Label Text="List of things to do" />
-        <Entry Placeholder="Add Errand" Text="{Binding NewTask}" />
-        <Entry Placeholder="Add Description" Text="{Binding NewDescription}" />
+        <Label Text="List of things to do" 
+               TextColor="White"/>
+        <Entry Placeholder="Add Errand" Text="{Binding NewTask}" 
+               TextColor="White"/>
+        <Entry Placeholder="Add Description" Text="{Binding NewDescription}" 
+               TextColor="White"/>
         <Button Text="Add" Command="{Binding AddCommand}" />
     </VerticalStackLayout>
 </ContentPage>

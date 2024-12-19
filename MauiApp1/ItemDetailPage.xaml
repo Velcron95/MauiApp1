@@ -2,9 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.ItemDetailPage"
              Title="Add a Task">
-    <VerticalStackLayout BackgroundColor="Black">
-        <Label Text="List of things to do" 
-               TextColor="White"/>
+    <VerticalStackLayout BackgroundColor="MidnightBlue">
+       
         <Entry Placeholder="Add Errand" Text="{Binding NewTask}" 
                TextColor="White"/>
         <Entry Placeholder="Add Description" Text="{Binding NewDescription}" 

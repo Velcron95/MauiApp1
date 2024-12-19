@@ -6,7 +6,7 @@
              x:Class="MauiApp1.MainPage"
              BindingContext="{Binding Source={x:Reference MainPage}}">
 
-    <Grid BackgroundColor="Black">
+    <Grid BackgroundColor="MidnightBlue">
        
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -24,7 +24,7 @@
                         <DataTemplate x:DataType="models:ToDoList">
                             <Frame Padding="10" Margin="5" BorderColor="Gray" CornerRadius="5">
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding Id}" FontSize="18" />
+                                    
                                     <Label Text="{Binding Name}" FontSize="18" />
                                     <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" />
                                     <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
@@ -41,7 +41,7 @@
                 </CollectionView>
                 <Button Text="Delete All Checked"
                         Command="{Binding DeleteAllCheckedCommand}"
-                        BackgroundColor="Red"
+                        
                         TextColor="White"
                         VerticalOptions="End" />
             </VerticalStackLayout>
@@ -57,7 +57,7 @@
                          VerticalOptions="Start"
                          HorizontalOptions="FillAndExpand">
                 <Label Text="Edit Task" FontSize="20" HorizontalOptions="Center" />
-                <Label Text="{Binding SelectedTask.Id}" />
+                
                 <Entry Text="{Binding SelectedTask.Name}" Placeholder="Task Name" />
                 <Entry Text="{Binding SelectedTask.Description}" Placeholder="Task Description" />
                 <Button Text="Save" Command="{Binding SaveEditCommand}" />
